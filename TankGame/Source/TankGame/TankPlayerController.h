@@ -14,7 +14,7 @@ class TANKGAME_API ATankPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 	
-public:
+private:
 	ATank* GetControlledTank() const;
 	
 	virtual void BeginPlay() override;
@@ -24,4 +24,15 @@ public:
 	//Start the tank moving the barrel so that a shot would be hit where
 	//the crosshair intersects the world
 	void AimTowardsCrosshair();
+
+	UPROPERTY(EditAnywhere)
+	float CrossHairXLocation=0.5,CrossHairYLocation=0.33333;
+
+	UPROPERTY(EditAnywhere)
+	float LineTraceRange = 10000000.f;
+
+	//Return an OUT parameter, true if hit landscape
+	bool GetSightRayHitLocation(FVector& Hit) const;
+	bool GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection)const;
+	bool GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation)const;
 };

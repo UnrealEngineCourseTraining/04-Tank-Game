@@ -10,10 +10,13 @@ class TANKGAME_API ATank : public APawn
 {
 	GENERATED_BODY()
 
-public:
+public:	
+	void AimAt(FVector HitLocation);
+
+private:
 	// Sets default values for this pawn's properties
 	ATank();
-
+	
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	
